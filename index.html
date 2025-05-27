@@ -4,68 +4,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espaço Vetim</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Modal de zoom */
-    .modal {
-      display: none; 
-      position: fixed; 
-      z-index: 2000; 
-      padding-top: 60px; 
-      left: 0;
-      top: 0;
-      width: 100%; 
-      height: 100%; 
-      overflow: auto; 
-      background-color: rgba(0,0,0,0.9);
-    }
-
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 0 20px white;
-      transition: 0.3s;
-    }
-
-    /* Botão de fechar */
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 35px;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #1e1e2f, #2b2b40);
       color: #fff;
+      line-height: 1.6;
+    }
+
+   header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: #151522; /* fundo escuro e uniforme */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3.5rem;
+  color: #aaa; /* cinza */
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpModern 1s forwards ease-out;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #888; /* cinza claro */
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpModern 1.2s forwards ease-out;
+}
+
+@keyframes fadeUpModern {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  
+/* Separador animado abaixo do título */
+header::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  margin: 20px auto 0;
+  background: #858585;
+  border-radius: 5px;
+  animation: separator 2s infinite alternate;
+}
+
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #5b5b5b;
+      display: inline-block;
+    }
+
+    .descricao, ul {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+    }
+
+    ul li {
+      margin: 8px 0;
+    }
+
+    /* 🔷 SERVIÇOS - Layout moderno com boxes */
+    .servicos-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .box {
+      background: #1e1e2f;
+      border-radius: 15px;
+      padding: 30px 20px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .box span {
       font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      user-select: none;
-      transition: 0.3s;
-      z-index: 2100;
+      display: block;
+      margin-bottom: 15px;
     }
 
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
+    .box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #68d391;
     }
 
-    /* Galeria - deixa as imagens do mesmo tamanho */
+    .box p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
     .galeria img {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-      transition: transform 0.3s ease;
     }
 
     .galeria img:hover {
       transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: #68d391;
+      color: #000000;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #111211;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #999;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .whatsapp-logo {
+      width: 60px;
+      height: 60px;
+      filter: drop-shadow(0 0 5px white);
+    }
+
+    .voltar-topo {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      left  : 25px;
+      background-color: #363434;
+      color: #312c2c;
+      border: none;
+      border-radius: 50%;
+      padding: 10px 15px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .galeria {
+  justify-items: center;
+  align-items: center;
+}
   </style>
+
 </head>
 <body>
   <header>
@@ -73,118 +209,114 @@
     <p>Aluga-se para eventos e confraternizações</p>
   </header>
 
-
- <section id="sobre" class="section sobre-decorada">
-  </div>
-  <h2>Sobre o Espaço</h2>
-  <p class="descricao">
-    Nosso espaço é perfeito para celebrar momentos inesquecíveis. Ambiente amplo, área coberta, piscina com iluminação noturna, churrasqueira equipada, mesas e cadeiras — tudo para sua festa ser um sucesso!
-  </p>
-</section>
-  <section id="servicos" class="section">
-    <h2>O que oferecemos</h2>
-    <ul>
-      <li>Salão para até 80 pessoas</li>
-      <li>Área externa com piscina aquecida</li>
-      <li>Churrasqueira equipada</li>
-      <li>Quarto</li>
-      <li>Banheiros</li>
-    </ul>
+  <section id="sobre">
+    <h2>Sobre o Espaço</h2>
+    <p class="descricao">
+      Nosso espaço é perfeito para celebrar momentos inesquecíveis. Ambiente amplo, área coberta, piscina com iluminação noturna, churrasqueira equipada, mesas e cadeiras — tudo para sua festa ser um sucesso!
+    </p>
   </section>
 
-  <section id="galeria" class="section">
+    <section id="servicos">
+  <h2>O que oferecemos</h2>
+  <div class="servicos-boxes">
+    <div class="box">
+      <span>🏛️</span>
+      <h3>Salão</h3>
+      <p>Para até 80 pessoas</p>
+    </div>
+    <div class="box">
+      <span>🏊</span>
+      <h3>Piscina</h3>
+      <p>Área externa com iluminação</p>
+    </div>
+    <div class="box">
+      <span>🔥</span>
+      <h3>Churrasqueira</h3>
+      <p>Equipada e coberta</p>
+    </div>
+    <div class="box">
+      <span>🛏️</span>
+      <h3>Quarto</h3>
+      <p>Conforto e privacidade</p>
+    </div>
+    <div class="box">
+      <span>🚻</span>
+      <h3>Banheiros</h3>
+      <p>Disponíveis no local</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="galeria">
     <h2>Galeria</h2>
     <div class="galeria">
-      <img src="imagem/espaço.jpg" alt="Foto 1">
-      <img src="imagem/piscina.jpg" alt="Foto 2">
-      <img src="imagem/area.jpg" alt="Foto 3">
-      <img src="imagem/area2.jpg" alt="Foto 4">
-      <img src="imagem/piscina2.jpg" alt="Foto 5">
-      <img src="imagem/quarto.jpg" alt="Foto 6">
-      <img src="imagem/churras.jpg" alt="Foto 7">
-      <img src="imagem/banheiro.jpg" alt="Foto 8">
-      <img src="imagem/lateral.jpg" alt="Foto 9">
+      <img src="imagem/espaço.jpg" alt="Foto do espaço">
+      <img src="imagem/piscina.jpg" alt="Piscina noturna">
+      <img src="imagem/area.jpg" alt="Área aberta">
+      <img src="imagem/area2.jpg" alt="Área externa">
+      <img src="imagem/piscina2.jpg" alt="Piscina iluminada">
+      <img src="imagem/quarto.jpg" alt="Quarto">
+      <img src="imagem/churras.jpg" alt="Churrasqueira">
+      <img src="imagem/banheiro.jpg" alt="Banheiro">
+      <img src="imagem/lateral.jpg" alt="Vista lateral">
     </div>
   </section>
 
-  <section id="contato" class="section">
+  <section id="contato">
     <h2>Contato</h2>
     <p>Agende sua visita ou tire dúvidas:</p>
-    <p>📞 (34) 9249-6259</p>
+    <p>📞 (34) 99249-6259</p>
     <p>📧 fvitoralencar@outlook.com</p>
     <a href="https://wa.me/553492496259" class="btn">Fale no WhatsApp</a>
   </section>
-
-<!--google maps-->
-<section id="localizacao" class="section">
-  <h2>Localização</h2>
-  <p>Veja como é fácil chegar até o Espaço Vetim:</p>
-  <iframe src="https://www.google.com/maps/embed?pb=SEULINKAQUI" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</section>
-
-  <footer>
+    <footer>
     <p>&copy; 2025 Espaço Vetim - Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Modal para zoom da imagem -->
-  <div id="modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modal-img" alt="Imagem ampliada">
+  <!-- Botão flutuante WhatsApp -->
+  <a href="https://wa.me/553492496259" class="whatsapp-float" target="_blank" aria-label="Fale no WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-logo">
+  </a>
+
+  <!-- Botão Voltar ao Topo -->
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="voltar-topo" title="Voltar ao topo">⬆️</button>
+
+  <!-- Modal de Zoom -->
+  <div id="imagemModal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
+    <span onclick="fecharModal()" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer;">&times;</span>
+    <img id="imagemModalConteudo" style="max-width:90%; max-height:90%; border-radius:15px;" />
   </div>
 
   <script>
-    // Seleciona modal e elementos
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modal-img");
-    const closeBtn = document.querySelector(".close");
+    const btnTopo = document.querySelector('.voltar-topo');
+    window.addEventListener('scroll', () => {
+      btnTopo.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
 
-    // Todas as imagens da galeria
-    const imagensGaleria = document.querySelectorAll(".galeria img");
+    // Zoom ao clicar na imagem
+    const imagens = document.querySelectorAll('.galeria img');
+    const modal = document.getElementById('imagemModal');
+    const modalImg = document.getElementById('imagemModalConteudo');
 
-    imagensGaleria.forEach(img => {
-      img.addEventListener("click", () => {
-        modal.style.display = "block";
+    imagens.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
         modalImg.src = img.src;
         modalImg.alt = img.alt;
       });
     });
 
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
+    function fecharModal() {
+      modal.style.display = 'none';
+    }
 
-    // Fechar modal ao clicar fora da imagem
-    modal.addEventListener("click", (e) => {
+    // Fechar ao clicar fora da imagem
+    modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-
-    // Fechar modal com ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        modal.style.display = "none";
+        fecharModal();
       }
     });
   </script>
-
-  <a href="https://wa.me/553492496259" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-logo">
-</a>
-<button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="voltar-topo" title="Voltar ao topo">
-  ⬆️
-</button>
-<script>
-  const btnTopo = document.querySelector('.voltar-topo');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      btnTopo.style.display = 'block';
-    } else {
-      btnTopo.style.display = 'none';
-    }
-  });
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </body>
 </html>
