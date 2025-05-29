@@ -1,322 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Espaço Vetim</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #1e1e2f, #2b2b40);
-      color: #fff;
-      line-height: 1.6;
-    }
-
-   header {
-  text-align: center;
-  padding: 60px 20px 40px;
-  background: #151522; /* fundo escuro e uniforme */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  position: relative;
-  overflow: hidden;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 3.5rem;
-  color: #aaa; /* cinza */
-  font-weight: 600;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUpModern 1s forwards ease-out;
-}
-
-header p {
-  font-size: 1.2rem;
-  color: #888; /* cinza claro */
-  margin-top: 10px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUpModern 1.2s forwards ease-out;
-}
-
-@keyframes fadeUpModern {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-  
-/* Separador animado abaixo do título */
-header::after {
-  content: "";
-  display: block;
-  width: 100px;
-  height: 4px;
-  margin: 20px auto 0;
-  background: #858585;
-  border-radius: 5px;
-  animation: separator 2s infinite alternate;
-}
-
-
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #5b5b5b;
-      display: inline-block;
-    }
-
-    .descricao, ul {
-      font-size: 1.1rem;
-      color: #e0e0e0;
-    }
-
-    ul li {
-      margin: 8px 0;
-    }
-
-    /* 🔷 SERVIÇOS - Layout moderno com boxes */
-    .servicos-boxes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .box {
-      background: #1e1e2f;
-      border-radius: 15px;
-      padding: 30px 20px;
-      text-align: center;
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-    }
-
-    .box span {
-      font-size: 40px;
-      display: block;
-      margin-bottom: 15px;
-    }
-
-    .box h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: #68d391;
-    }
-
-    .box p {
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
-
-    .galeria img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-
-    .galeria img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 25px;
-      background: #68d391;
-      color: #000000;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #111211;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      color: #999;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-
-    .whatsapp-logo {
-      width: 60px;
-      height: 60px;
-      filter: drop-shadow(0 0 5px white);
-    }
-
-    .voltar-topo {
-      display: none;
-      position: fixed;
-      bottom: 90px;
-      left  : 25px;
-      background-color: #363434;
-      color: #312c2c;
-      border: none;
-      border-radius: 50%;
-      padding: 10px 15px;
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-    .galeria {
-  justify-items: center;
-  align-items: center;
-}
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Usando a fonte Roboto Slab corretamente -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <title>Espaço Vetim</title>
 </head>
+
 <body>
-  <header>
-    <h1>Espaço Vetim</h1>
-    <p>Aluga-se para eventos e confraternizações</p>
-  </header>
+    <header class="header">
+        <section>
+            <a href="#" class="logo">
+                <!-- Nome de arquivo sem acento -->
+                <img src="imagem/logo.jpg" width="100" height="100" alt="logo">
+            </a>
 
-  <section id="sobre">
-    <h2>Sobre o Espaço</h2>
-    <p class="descricao">
-      Nosso espaço é perfeito para celebrar momentos inesquecíveis. Ambiente amplo, área coberta, piscina com iluminação noturna, churrasqueira equipada, mesas e cadeiras — tudo para sua festa ser um sucesso!
-    </p>
-  </section>
+            <nav class="navbar">
+                <a href="#">Home</a>
+                <a href="#about">Sobre</a>
+                <a href="#menu">Menu</a>
+                <a href="#contact">Contato</a>
+            </nav>
 
-    <section id="servicos">
-  <h2>O que oferecemos</h2>
-  <div class="servicos-boxes">
-    <div class="box">
-      <span>🏛️</span>
-      <h3>Salão</h3>
-      <p>Para até 80 pessoas</p>
+            <!-- Corrigido Class para class -->
+            <div class="icons">
+                <a href="https://wa.me/+553492496259" target="_blank" class="whatsapp-button">
+                    <!-- Ícone WhatsApp -->
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                        viewBox="0,0,256,256">
+                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <g transform="scale(10.66667,10.66667)">
+                                <path
+                                    d="M12.01172,2c-5.506,0 -9.98823,4.47838 -9.99023,9.98438c-0.001,1.76 0.45998,3.47819 1.33398,4.99219l-1.35547,5.02344l5.23242,-1.23633c1.459,0.796 3.10144,1.21384 4.77344,1.21484h0.00391c5.505,0 9.98528,-4.47937 9.98828,-9.98437c0.002,-2.669 -1.03588,-5.17841 -2.92187,-7.06641c-1.886,-1.887 -4.39245,-2.92673 -7.06445,-2.92773zM12.00977,4c2.136,0.001 4.14334,0.8338 5.65234,2.3418c1.509,1.51 2.33794,3.51639 2.33594,5.65039c-0.002,4.404 -3.58423,7.98633 -7.99023,7.98633c-1.333,-0.001 -2.65341,-0.3357 -3.81641,-0.9707l-0.67383,-0.36719l-0.74414,0.17578l-1.96875,0.46484l0.48047,-1.78516l0.2168,-0.80078l-0.41406,-0.71875c-0.698,-1.208 -1.06741,-2.58919 -1.06641,-3.99219c0.002,-4.402 3.58528,-7.98437 7.98828,-7.98437zM8.47656,7.375c-0.167,0 -0.43702,0.0625 -0.66602,0.3125c-0.229,0.249 -0.875,0.85208 -0.875,2.08008c0,1.228 0.89453,2.41503 1.01953,2.58203c0.124,0.166 1.72667,2.76563 4.26367,3.76563c2.108,0.831 2.53614,0.667 2.99414,0.625c0.458,-0.041 1.47755,-0.60255 1.68555,-1.18555c0.208,-0.583 0.20848,-1.0845 0.14648,-1.1875c-0.062,-0.104 -0.22852,-0.16602 -0.47852,-0.29102c-0.249,-0.125 -1.47608,-0.72755 -1.70508,-0.81055c-0.229,-0.083 -0.3965,-0.125 -0.5625,0.125c-0.166,0.25 -0.64306,0.81056 -0.78906,0.97656c-0.146,0.167 -0.29102,0.18945 -0.54102,0.06445c-0.25,-0.126 -1.05381,-0.39024 -2.00781,-1.24024c-0.742,-0.661 -1.24267,-1.47656 -1.38867,-1.72656c-0.145,-0.249 -0.01367,-0.38577 0.11133,-0.50977c0.112,-0.112 0.24805,-0.2915 0.37305,-0.4375c0.124,-0.146 0.167,-0.25002 0.25,-0.41602c0.083,-0.166 0.04051,-0.3125 -0.02149,-0.4375c-0.062,-0.125 -0.54753,-1.35756 -0.76953,-1.85156c-0.187,-0.415 -0.3845,-0.42464 -0.5625,-0.43164c-0.145,-0.006 -0.31056,-0.00586 -0.47656,-0.00586z">
+                                </path>
+                            </g>
+                    </svg>
+            </div>
+        </section>
+    </header>
+
+    <div class="home-container">
+        <section id="home"> <!-- Corrigido id sem # -->
+            <div class="content">
+                <h3>MELHOR ESPAÇO DA REGIÃO</h3>
+                <p>Nosso espaço é perfeito para celebrar momentos inesquecíveis. Ambiente amplo, área coberta, piscina
+                    com iluminação noturna, churrasqueira equipada, mesas e cadeiras — tudo para sua festa ser um
+                    sucesso!</p>
+                <a href="https://wa.me/+553492496259" class="btn">Alugue agora </a>
+            </div>
+        </section>
     </div>
-    <div class="box">
-      <span>🏊</span>
-      <h3>Piscina</h3>
-      <p>Área externa com iluminação</p>
+
+    <section class="about" id="about">
+        <h2>Sobre o Espaço</h2>
+        <div class="row">
+            <div class="container-image">
+                <img src="imagem/area.jpg" alt="Espaço Vetim" width="600" height="400">
+            </div>
+            <div class="content">
+                <h3>O Que Faz Nosso Espaço Especial</h3>
+                <p>O que faz nosso espaço especial é a combinação perfeita de conforto, lazer e estrutura completa —
+                    piscina, churrasqueira, área gourmet e muito mais para você curtir momentos inesquecíveis!</p>
+                <a href="#" class="btn">Saiba Mais</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        
+        <h2 class="title">O que oferecemos</h2>
+        <div class="box-container">
+            <!-- Adicionadas as classes "box" nos 3 blocos -->
+            <div class="box">
+                <img src="imagem/lateral.jpg" alt="Salão" width="200" height="200" >
+                <span></span>
+                <h3>Salão</h3>
+                <p>Amplo salão para eventos, com capacidade para até 100 pessoas.</p>
+            </div>
+            <div class="box">
+                <img src="imagem/churras.jpg" alt="Churrasqueira" width="200" height="200">
+                <span></span>
+                <h3>Churrasqueira</h3>
+                <p>Churrasqueira equipada para preparar deliciosos churrascos.</p>
+            </div>
+            <div class="box">
+                <img src="imagem/piscina2.jpg" alt="Piscina" width="200" height="200">
+                <span></span>
+                <h3>Piscina</h3>
+                <p>Piscina iluminada, ideal para relaxar e se divertir à noite.</p>
+            </div>
+        </div>
+    </section>
+    
+<!-- Modal para zoom da imagem -->
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage">
     </div>
-    <div class="box">
-      <span>🔥</span>
-      <h3>Churrasqueira</h3>
-      <p>Equipada e coberta</p>
-    </div>
-    <div class="box">
-      <span>🛏️</span>
-      <h3>Quarto</h3>
-      <p>Conforto e privacidade</p>
-    </div>
-    <div class="box">
-      <span>🚻</span>
-      <h3>Banheiros</h3>
-      <p>Disponíveis no local</p>
-    </div>
-  </div>
+
+    <script>
+  // Abrir o modal ao clicar na imagem
+  document.querySelectorAll('.box img').forEach(img => {
+    img.addEventListener('click', () => {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    });
+  });
+
+  // Fechar o modal
+  function closeModal() {
+    document.getElementById('imageModal').style.display = "none";
+  }
+</script>
+
+<section class="contact">
+  <h2>Contato</h2>
+  <p>Agende sua visita, tire suas dúvidas ou faça uma reserva — estamos prontos para ajudar você!</p>
+  <p>📩 fvitoralencar@outlook.com</p>
 </section>
 
 
-  <section id="galeria">
-    <h2>Galeria</h2>
-    <div class="galeria">
-      <img src="imagem/espaço.jpg" alt="Foto do espaço">
-      <img src="imagem/piscina.jpg" alt="Piscina noturna">
-      <img src="imagem/area.jpg" alt="Área aberta">
-      <img src="imagem/area2.jpg" alt="Área externa">
-      <img src="imagem/piscina2.jpg" alt="Piscina iluminada">
-      <img src="imagem/quarto.jpg" alt="Quarto">
-      <img src="imagem/churras.jpg" alt="Churrasqueira">
-      <img src="imagem/banheiro.jpg" alt="Banheiro">
-      <img src="imagem/lateral.jpg" alt="Vista lateral">
-    </div>
-  </section>
-
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>Agende sua visita ou tire dúvidas:</p>
-    <p>📞 (34) 99249-6259</p>
-    <p>📧 fvitoralencar@outlook.com</p>
-    <a href="https://wa.me/553492496259" class="btn">Fale no WhatsApp</a>
-  </section>
-    <footer>
-    <p>&copy; 2025 Espaço Vetim - Todos os direitos reservados.</p>
-  </footer>
-
-  <!-- Botão flutuante WhatsApp -->
-  <a href="https://wa.me/553492496259" class="whatsapp-float" target="_blank" aria-label="Fale no WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-logo">
-  </a>
-
-  <!-- Botão Voltar ao Topo -->
-  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="voltar-topo" title="Voltar ao topo">⬆️</button>
-
-  <!-- Modal de Zoom -->
-  <div id="imagemModal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
-    <span onclick="fecharModal()" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer;">&times;</span>
-    <img id="imagemModalConteudo" style="max-width:90%; max-height:90%; border-radius:15px;" />
-  </div>
-
-  <script>
-    const btnTopo = document.querySelector('.voltar-topo');
-    window.addEventListener('scroll', () => {
-      btnTopo.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-
-    // Zoom ao clicar na imagem
-    const imagens = document.querySelectorAll('.galeria img');
-    const modal = document.getElementById('imagemModal');
-    const modalImg = document.getElementById('imagemModalConteudo');
-
-    imagens.forEach(img => {
-      img.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-      });
-    });
-
-    function fecharModal() {
-      modal.style.display = 'none';
-    }
-
-    // Fechar ao clicar fora da imagem
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        fecharModal();
-      }
-    });
-  </script>
 </body>
 </html>
