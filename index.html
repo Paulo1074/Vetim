@@ -1,135 +1,138 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Usando a fonte Roboto Slab corretamente -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Espaço Vetim</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@...&family=Inter:ital,opsz,wght@...&display=swap" rel="stylesheet" />
+    <!-- FontAwesome para ícones -->
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+    <!-- AOS (opcional) -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> -->
 </head>
 
 <body>
+
+    <!-- Header -->
     <header class="header">
-        <section>
-            <a href="#" class="logo">
-                <!-- Nome de arquivo sem acento -->
-                <img src="imagem/logo.jpg" width="100" height="100" alt="logo">
+        <a href="#" class="logo">
+            <img src="imagem/vetim.jpg" alt="Logo Espaço Vetim" width="50" height="50" />
+        </a>
+        <nav class="navbar">
+            <a href="#home">Início</a>
+            <a href="#about">Sobre</a>
+            <a href="#services">O que oferecemos</a>
+            <a href="#contact">Contato</a>
+        </nav>
+        <div class="icons">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/espacovetim/" target="_blank" title="Instagram">
+                <img src="imagem/instaaa.jpg" alt="" width="44" height="40" />
             </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/+553492496259" target="_blank" title="WhatsApp">
+                <img src="imagem/whs.jpg" alt="" width="40" height="40" />
+            </a>
+        </div>
+    </header>   
 
-            <nav class="navbar">
-                <a href="#">Home</a>
-                <a href="#about">Sobre</a>
-                <a href="#menu">Menu</a>
-                <a href="#contact">Contato</a>
-            </nav>
+    <!-- Home -->
+    <section class="home-container" id="home">
+        <div class="content">
+            <h3>Bem-vindo ao Espaço Vetim</h3>
+            <p>Cuidando de você com amor e dedicação.</p>
+            <a href="https://wa.me/+553492496259" target="_blank" class="btn">Agende seu horário pelo WhatsApp</a>
+        </div>
+    </section>
 
-            <!-- Corrigido Class para class -->
-            <div class="icons">
-                <a href="https://wa.me/+553492496259" target="_blank" class="whatsapp-button">
-                    <!-- Ícone WhatsApp -->
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                        viewBox="0,0,256,256">
-                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                            style="mix-blend-mode: normal">
-                            <g transform="scale(10.66667,10.66667)">
-                                <path
-                                    d="M12.01172,2c-5.506,0 -9.98823,4.47838 -9.99023,9.98438c-0.001,1.76 0.45998,3.47819 1.33398,4.99219l-1.35547,5.02344l5.23242,-1.23633c1.459,0.796 3.10144,1.21384 4.77344,1.21484h0.00391c5.505,0 9.98528,-4.47937 9.98828,-9.98437c0.002,-2.669 -1.03588,-5.17841 -2.92187,-7.06641c-1.886,-1.887 -4.39245,-2.92673 -7.06445,-2.92773zM12.00977,4c2.136,0.001 4.14334,0.8338 5.65234,2.3418c1.509,1.51 2.33794,3.51639 2.33594,5.65039c-0.002,4.404 -3.58423,7.98633 -7.99023,7.98633c-1.333,-0.001 -2.65341,-0.3357 -3.81641,-0.9707l-0.67383,-0.36719l-0.74414,0.17578l-1.96875,0.46484l0.48047,-1.78516l0.2168,-0.80078l-0.41406,-0.71875c-0.698,-1.208 -1.06741,-2.58919 -1.06641,-3.99219c0.002,-4.402 3.58528,-7.98437 7.98828,-7.98437zM8.47656,7.375c-0.167,0 -0.43702,0.0625 -0.66602,0.3125c-0.229,0.249 -0.875,0.85208 -0.875,2.08008c0,1.228 0.89453,2.41503 1.01953,2.58203c0.124,0.166 1.72667,2.76563 4.26367,3.76563c2.108,0.831 2.53614,0.667 2.99414,0.625c0.458,-0.041 1.47755,-0.60255 1.68555,-1.18555c0.208,-0.583 0.20848,-1.0845 0.14648,-1.1875c-0.062,-0.104 -0.22852,-0.16602 -0.47852,-0.29102c-0.249,-0.125 -1.47608,-0.72755 -1.70508,-0.81055c-0.229,-0.083 -0.3965,-0.125 -0.5625,0.125c-0.166,0.25 -0.64306,0.81056 -0.78906,0.97656c-0.146,0.167 -0.29102,0.18945 -0.54102,0.06445c-0.25,-0.126 -1.05381,-0.39024 -2.00781,-1.24024c-0.742,-0.661 -1.24267,-1.47656 -1.38867,-1.72656c-0.145,-0.249 -0.01367,-0.38577 0.11133,-0.50977c0.112,-0.112 0.24805,-0.2915 0.37305,-0.4375c0.124,-0.146 0.167,-0.25002 0.25,-0.41602c0.083,-0.166 0.04051,-0.3125 -0.02149,-0.4375c-0.062,-0.125 -0.54753,-1.35756 -0.76953,-1.85156c-0.187,-0.415 -0.3845,-0.42464 -0.5625,-0.43164c-0.145,-0.006 -0.31056,-0.00586 -0.47656,-0.00586z">
-                                </path>
-                            </g>
-                    </svg>
-            </div>
-        </section>
-    </header>
-
-    <div class="home-container">
-        <section id="home"> <!-- Corrigido id sem # -->
-            <div class="content">
-                <h3>MELHOR ESPAÇO DA REGIÃO</h3>
-                <p>Nosso espaço é perfeito para celebrar momentos inesquecíveis. Ambiente amplo, área coberta, piscina
-                    com iluminação noturna, churrasqueira equipada, mesas e cadeiras — tudo para sua festa ser um
-                    sucesso!</p>
-                <a href="https://wa.me/+553492496259" class="btn">Alugue agora </a>
-            </div>
-        </section>
-    </div>
-
+    <!-- Sobre -->
     <section class="about" id="about">
-        <h2>Sobre o Espaço</h2>
+        <h2>Sobre o Espaço Vetim</h2>
         <div class="row">
             <div class="container-image">
-                <img src="imagem/area.jpg" alt="Espaço Vetim" width="600" height="400">
+                <img src="imagem/vetim.jpg" alt="Sobre nós" width="40%" />
             </div>
-            <div class="content">
-                <h3>O Que Faz Nosso Espaço Especial</h3>
-                <p>O que faz nosso espaço especial é a combinação perfeita de conforto, lazer e estrutura completa —
-                    piscina, churrasqueira, área gourmet e muito mais para você curtir momentos inesquecíveis!</p>
-                <a href="#" class="btn">Saiba Mais</a>
+            <div class="container-text">
+                <h3>O espaço perfeito para suas celebrações</h3>
+                <p>O Espaço Vetim oferece um ambiente versátil e acolhedor, ideal para festas, eventos sociais e
+                    confraternizações. Com uma estrutura completa, garantimos que seus momentos especiais sejam
+                    inesquecíveis.</p>
+                <p>Venha desfrutar de:</p>
+                <ul>
+                    <li>Salão amplo e climatizado para todos os tipos de eventos</li>
+                    <li>Área de lazer com piscina e espaços externos</li>
+                    <li>Ambiente decorado e equipado para seu conforto</li>
+                    <li>Localização acessível e segura</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section class="menu" id="menu">
-        
+    <!-- Serviços -->
+    <section class="menu" id="services">
         <h2 class="title">O que oferecemos</h2>
         <div class="box-container">
-            <!-- Adicionadas as classes "box" nos 3 blocos -->
             <div class="box">
-                <img src="imagem/lateral.jpg" alt="Salão" width="200" height="200" >
-                <span></span>
-                <h3>Salão</h3>
-                <p>Amplo salão para eventos, com capacidade para até 100 pessoas.</p>
+                <img src="imagem/area.jpg" alt="Espaço amplo" class="zoomable" />
+                <h3>Espaço</h3>
+                <p>Temos um ambiente amplo e confortável.</p>
             </div>
             <div class="box">
-                <img src="imagem/churras.jpg" alt="Churrasqueira" width="200" height="200">
-                <span></span>
-                <h3>Churrasqueira</h3>
-                <p>Churrasqueira equipada para preparar deliciosos churrascos.</p>
+                <img src="imagem/area2.jpg" alt="Área de lazer" class="zoomable" />
+                <h3>Área de lazer</h3>
+                <p>Uma área projetada para seu descanso e entretenimento.</p>
             </div>
             <div class="box">
-                <img src="imagem/piscina2.jpg" alt="Piscina" width="200" height="200">
-                <span></span>
+                <img src="imagem/piscina2.jpg" alt="Piscina" class="zoomable" />
                 <h3>Piscina</h3>
-                <p>Piscina iluminada, ideal para relaxar e se divertir à noite.</p>
+                <p>A piscina perfeita para relaxar, se refrescar e transformar seus momentos em puro lazer.</p>
             </div>
         </div>
     </section>
-    
-<!-- Modal para zoom da imagem -->
-    <div id="imageModal" class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img class="modal-content" id="modalImage">
+
+    <!-- Contato -->
+    <section class="contact" id="contact">
+        <h2>Entre em contato</h2>
+        <p>Ou pelo Instagram: <a href="https://www.instagram.com/espacovetim/" target="_blank">@espacovetim</a>
+        </p>
+        <p>Endereço: Rua João Guimarães Borges, número 135 - Bairro Mangabeiras V</p>
+        <p>Telefone: (34) 9249-6259</p>
+        <p>E-mail: fvitoralencar@outlook.com</p>
+    </section>
+
+    <!-- Modal de imagem -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img" alt="Imagem Ampliada">
     </div>
 
+    <!-- Script para zoom -->
     <script>
-  // Abrir o modal ao clicar na imagem
-  document.querySelectorAll('.box img').forEach(img => {
-    img.addEventListener('click', () => {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImage');
-      modal.style.display = "block";
-      modalImg.src = img.src;
-      modalImg.alt = img.alt;
-    });
-  });
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        const closeBtn = document.querySelector(".close");
 
-  // Fechar o modal
-  function closeModal() {
-    document.getElementById('imageModal').style.display = "none";
-  }
-</script>
+        document.querySelectorAll(".zoomable").forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "block";
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+            });
+        });
 
-<section class="contact">
-  <h2>Contato</h2>
-  <p>Agende sua visita, tire suas dúvidas ou faça uma reserva — estamos prontos para ajudar você!</p>
-  <p>📩 fvitoralencar@outlook.com</p>
-</section>
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
 
+        modal.addEventListener("click", e => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
+
 </html>
