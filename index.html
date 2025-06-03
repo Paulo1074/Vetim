@@ -2,137 +2,205 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Espaço Vetim</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@...&family=Inter:ital,opsz,wght@...&display=swap" rel="stylesheet" />
-    <!-- FontAwesome para ícones -->
-    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
-    <!-- AOS (opcional) -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espaço Vetim</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Inter&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome para ícones -->
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+
+  <!-- AOS: Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  
+  <style>
+    /* Cursor piscando para efeito de digitação */
+    #typed-text {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 2rem;
+      white-space: nowrap;
+      border-right: 2px solid black; /* cursor */
+      animation: blink-caret 0.8s step-end infinite;
+      overflow: hidden;
+      width: fit-content;
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: black; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <a href="#" class="logo">
-            <img src="imagem/vetim.jpg" alt="Logo Espaço Vetim" width="50" height="50" />
-        </a>
-        <nav class="navbar">
-            <a href="#home">Início</a>
-            <a href="#about">Sobre</a>
-            <a href="#services">O que oferecemos</a>
-            <a href="#contact">Contato</a>
-        </nav>
-        <div class="icons">
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/espacovetim/" target="_blank" title="Instagram">
-                <img src="imagem/instaaa.jpg" alt="" width="44" height="40" />
-            </a>
-            <!-- WhatsApp -->
-            <a href="https://wa.me/+553492496259" target="_blank" title="WhatsApp">
-                <img src="imagem/whs.jpg" alt="" width="40" height="40" />
-            </a>
-        </div>
-    </header>   
-
-    <!-- Home -->
-    <section class="home-container" id="home">
-        <div class="content">
-            <h3>Bem-vindo ao Espaço Vetim</h3>
-            <p>Cuidando de você com amor e dedicação.</p>
-            <a href="https://wa.me/+553492496259" target="_blank" class="btn">Agende seu horário pelo WhatsApp</a>
-        </div>
-    </section>
-
-    <!-- Sobre -->
-    <section class="about" id="about">
-        <h2>Sobre o Espaço Vetim</h2>
-        <div class="row">
-            <div class="container-image">
-                <img src="imagem/vetim.jpg" alt="Sobre nós" width="40%" />
-            </div>
-            <div class="container-text">
-                <h3>O espaço perfeito para suas celebrações</h3>
-                <p>O Espaço Vetim oferece um ambiente versátil e acolhedor, ideal para festas, eventos sociais e
-                    confraternizações. Com uma estrutura completa, garantimos que seus momentos especiais sejam
-                    inesquecíveis.</p>
-                <p>Venha desfrutar de:</p>
-                <ul>
-                    <li>Salão amplo e climatizado para todos os tipos de eventos</li>
-                    <li>Área de lazer com piscina e espaços externos</li>
-                    <li>Ambiente decorado e equipado para seu conforto</li>
-                    <li>Localização acessível e segura</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section class="menu" id="services">
-        <h2 class="title">O que oferecemos</h2>
-        <div class="box-container">
-            <div class="box">
-                <img src="imagem/area.jpg" alt="Espaço amplo" class="zoomable" />
-                <h3>Espaço</h3>
-                <p>Temos um ambiente amplo e confortável.</p>
-            </div>
-            <div class="box">
-                <img src="imagem/area2.jpg" alt="Área de lazer" class="zoomable" />
-                <h3>Área de lazer</h3>
-                <p>Uma área projetada para seu descanso e entretenimento.</p>
-            </div>
-            <div class="box">
-                <img src="imagem/piscina2.jpg" alt="Piscina" class="zoomable" />
-                <h3>Piscina</h3>
-                <p>A piscina perfeita para relaxar, se refrescar e transformar seus momentos em puro lazer.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section class="contact" id="contact">
-        <h2>Entre em contato</h2>
-        <p>Ou pelo Instagram: <a href="https://www.instagram.com/espacovetim/" target="_blank">@espacovetim</a>
-        </p>
-        <p>Endereço: Rua João Guimarães Borges, número 135 - Bairro Mangabeiras V</p>
-        <p>Telefone: (34) 9249-6259</p>
-        <p>E-mail: fvitoralencar@outlook.com</p>
-    </section>
-
-    <!-- Modal de imagem -->
-    <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modal-img" alt="Imagem Ampliada">
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">
+      <img src="imagem/logo orig.jpg" alt="Logo Espaço Vetim" width="90" height="90" />
+    </a>
+    <nav class="navbar">
+      <a href="#home">Início</a>
+      <a href="#about">Sobre</a>
+      <a href="#services">O que oferecemos</a>
+      <a href="#contact">Contato</a>
+    </nav>
+    <div class="icons">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/espacovetim/" target="_blank" title="Instagram">
+        <img src="imagem/insta dourado.jpg" alt="" width="44" height="40" />
+      </a>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/+553492496259" target="_blank" title="WhatsApp">
+        <img src="imagem/w douradp.jpg" alt="" width="40" height="40" />
+      </a>
     </div>
+  </header>
 
-    <!-- Script para zoom -->
-    <script>
-        const modal = document.getElementById("modal");
-        const modalImg = document.getElementById("modal-img");
-        const closeBtn = document.querySelector(".close");
+  <!-- Home -->
+  <section class="home-container" id="home">
+    <div class="content">
+      <h3 id="typed-text"></h3> <!-- Texto digitando aqui -->
+      <p>Cuidando de você com amor e dedicação.</p>
+      <a href="https://wa.me/+553492496259" target="_blank" class="btn">Agende seu horário pelo WhatsApp</a>
+    </div>
+  </section>
 
-        document.querySelectorAll(".zoomable").forEach(img => {
-            img.addEventListener("click", () => {
-                modal.style.display = "block";
-                modalImg.src = img.src;
-                modalImg.alt = img.alt;
-            });
-        });
+  <!-- Sobre -->
+  <section class="about" id="about" data-aos="fade-up">
+    <h2>Sobre o Espaço Vetim</h2>
+    <div class="row">
+      <div class="container-image">
+        <img src="imagem/vetim.jpg" alt="Sobre nós" width="40%" />
+      </div>
+      <div class="container-text">
+        <h3>O espaço perfeito para suas celebrações</h3>
+        <p>O Espaço Vetim oferece um ambiente versátil e acolhedor, ideal para festas, eventos sociais e confraternizações...</p>
+        <p>Aqui, sua segurança vem em primeiro lugar! Temos o AVCB (Auto de Vistoria do Corpo de Bombeiros) e o Alvará de Funcionamento,
+         que asseguram que nosso espaço está dentro de todas as normas técnicas e legais para oferecer conforto e tranquilidade.</p>
+        <p>Venha desfrutar de:</p>
+        <ul>
+          <li>Salão amplo e climatizado</li>
+          <li>Área de lazer com piscina</li>
+          <li>Ambiente decorado e equipado</li>
+          <li>Localização acessível e segura</li>
+          <li>Piscina aquecida e iluminada</li>
+          <li>Churrasqueira, Freezer, internet, quarto, banheiros</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        closeBtn.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
+  <!-- Serviços -->
+  <section class="menu" id="services" data-aos="fade-up">
+    <h2 class="title">O que oferecemos</h2>
+    <div class="box-container">
+      <div class="box" data-aos="zoom-in" data-aos-delay="100">
+        <img src="imagem/area.jpg" alt="Espaço amplo" class="zoomable" />
+        <h3>Espaço</h3>
+        <p>Temos um ambiente amplo e confortável.</p>
+      </div>
+      <div class="box" data-aos="zoom-in" data-aos-delay="200">
+        <img src="imagem/area2.jpg" alt="Área de lazer" class="zoomable" />
+        <h3>Área de lazer</h3>
+        <p>Uma área projetada para seu descanso e entretenimento.</p>
+      </div>
+      <div class="box" data-aos="zoom-in" data-aos-delay="300">
+        <img src="imagem/piscina2.jpg" alt="Piscina" class="zoomable" />
+        <h3>Piscina</h3>
+        <p>Perfeita para relaxar, se refrescar e curtir com alegria.</p>
+      </div>
+    </div>
+  </section>
 
-        modal.addEventListener("click", e => {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-    </script>
+  <!-- Contato -->
+  <section class="contact" id="contact" data-aos="fade-up">
+    <h2>Entre em contato</h2>
+    <p>Instagram: <a href="https://www.instagram.com/espacovetim/" target="_blank">@espacovetim</a></p>
+    <p>Endereço: Rua João Guimarães Borges, 135 - Mangabeiras V</p>
+    <p>Telefone: (34) 9249-6259</p>
+    <p>E-mail: fvitoralencar@outlook.com</p>
+  </section>
+
+  <!-- Modal de imagem -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" alt="Imagem Ampliada">
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Animação ao carregar conteúdo da home
+    window.addEventListener("load", () => {
+      const content = document.querySelector(".home-container .content");
+      content.style.opacity = 0;
+      content.style.transform = "translateY(30px)";
+      content.style.transition = "all 2s ease";
+
+      setTimeout(() => {
+        content.style.opacity = 1;
+        content.style.transform = "translateY(0)";
+      }, 200);
+    });
+
+    // Modal de imagem
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".close");
+
+    document.querySelectorAll(".zoomable").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    modal.addEventListener("click", e => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Efeito digitação
+   const texts = ["Bem-vindo ao Espaço Vetim", "Seu espaço para eventos", "Agende seu horário já!"];
+let textIndex = 0;
+let charIndex = 0;
+const speed = 60;
+const delay = 1500; // tempo antes de apagar
+
+function type() {
+  if (charIndex < texts[textIndex].length) {
+    document.getElementById("typed-text").innerHTML += texts[textIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, speed);
+  } else {
+    setTimeout(erase, delay);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    document.getElementById("typed-text").innerHTML = texts[textIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(erase, speed / 2);
+  } else {
+    textIndex++;
+    if (textIndex >= texts.length) textIndex = 0;
+    setTimeout(type, speed);
+  }
+}
+
+window.addEventListener("load", type);
+</script>
 
 </body>
-
 </html>

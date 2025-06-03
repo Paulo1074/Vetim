@@ -41,16 +41,19 @@ img:hover {
   padding: 1.5rem 5%;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1000; /* cabeçalho acima do conteúdo normal */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .header .logo img {
-  border-radius: 50%;
+  border-radius: 50% !important; /* forçar círculo */
+  object-fit: cover;              /* garantir preenchimento correto */
+  width: 90px;
+  height: 90px;
 }
 
 .navbar a {
-  margin-left: 2rem;
+  margin-left: 4rem;
   font-size: 1rem;
   position: relative;
   color: #fff;
@@ -80,7 +83,7 @@ img:hover {
 }
 
 .icons a {
-  margin: 0 10px; /* Espaçamento entre ícones */
+  margin: 0 10px;
 }
 
 .icons a svg {
@@ -130,16 +133,26 @@ img:hover {
 
 .btn {
   background-color: #000000;
-  color: #ffd000;
+  color: #FFD700;
   padding: 0.8rem 2rem;
   border-radius: 30px;
   font-weight: bold;
+  animation: pulse 2s infinite;
   transition: background-color 0.3s ease;
-  border: 2px solid #ffd000;
+  border: 2px solid #FFD700;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0);
+  }
 }
 
 .btn:hover {
-  background-color: #ffd000;
+  background-color: #FFD700;
   color: #000000;
 }
 
@@ -153,7 +166,7 @@ img:hover {
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 2rem;
-  color: #ffd000;
+  color: #FFD700;
 }
 
 .about .row {
@@ -183,7 +196,7 @@ img:hover {
 
 .about .content h3 {
   font-size: 1.8rem;
-  color: #ffd000;
+  color: #FFD700;
 }
 
 .about .content p {
@@ -199,7 +212,7 @@ img:hover {
 }
 
 .container-text h3 {
-  color: #ffd000;
+  color: #FFD700;
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
@@ -231,18 +244,18 @@ img:hover {
 .menu .title {
   text-align: center;
   font-size: 2.2rem;
-  color: #ffd000;
+  color: #FFD700;
   margin-bottom: 2rem;
 }
 
 .box-container {
   display: flex;
-  flex-wrap: nowrap; /* não quebrar linha */
-  overflow-x: auto;  /* scroll horizontal */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 2rem;
-  padding: 1rem 2rem 1rem 2rem; /* espaçamento interno */
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #ffd000 transparent;
+  padding: 1rem 2rem 1rem 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #FFD700 transparent;
 }
 
 .box-container::-webkit-scrollbar {
@@ -254,7 +267,7 @@ img:hover {
 }
 
 .box-container::-webkit-scrollbar-thumb {
-  background-color: #ffd000;
+  background-color:#FFD700;
   border-radius: 10px;
 }
 
@@ -262,15 +275,15 @@ img:hover {
   background: #111111;
   border-radius: 1rem;
   padding: 2rem;
-  min-width: 90px;       /* largura mínima para manter o formato */
-  flex: 0 0 auto;         /* impede encolhimento e mantém tamanho */
+  min-width: 90px;
+  flex: 0 0 auto;
   text-align: center;
   box-shadow: 0 5px 15px rgba(255, 208, 0, 0.3);
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;       /* deixa claro que é interativo */
+  cursor: pointer;
 }
 
 .box:hover {
@@ -278,7 +291,7 @@ img:hover {
 }
 
 .box img {
-  max-width: 200px; /* tamanho maior que 150px, mas ainda controlado */
+  max-width: 200px;
   width: 100%;
   height: auto;
   border-radius: 12px;
@@ -286,11 +299,9 @@ img:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-
-
 .box h3 {
   margin-top: 1rem;
-  color: #ffd000;
+  color: #FFD700;
   font-size: 1.4rem;
 }
 
@@ -300,12 +311,11 @@ img:hover {
   margin-top: 0.5rem;
 }
 
-
-/* Modal imagem */
+/* Modal imagem - corrigido para ficar acima do header */
 .modal {
   display: none;
   position: fixed;
-  z-index: 999;
+  z-index: 11000; /* bem acima do header */
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -324,12 +334,15 @@ img:hover {
 
 .close {
   position: absolute;
-  top: 30px;
-  right: 50px;
-  color: #ffd000;
+  top: 20px;
+  right: 30px;
+  color: #FFD700;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+  z-index: 12000; /* acima da imagem ampliada */
 }
 
 /* Contato */
@@ -341,7 +354,7 @@ img:hover {
 
 .contact h2 {
   font-size: 2rem;
-  color: #ffd000;
+  color: #FFD700;
   margin-bottom: 1rem;
 }
 
@@ -371,37 +384,25 @@ img:hover {
   }
 }
 
-/*zoom*/
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.95);
+/* Animation aos */
+.home-container .content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
 }
 
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80vh;
+/* Text type css */
+#typed-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 2.5rem;
+  white-space: nowrap;
+  border-right: 2px solid black; /* cursor */
+  animation: blink-caret 0.8s step-end infinite;
+  overflow: hidden;
+  width: fit-content;
 }
 
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.3s ease;
-  z-index: 1100;
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
 }
-
