@@ -398,10 +398,20 @@ img:hover {
     font-size: 1rem;
   }
 
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 25px;
+}
+
+@media (max-width: 768px) {
   .btn {
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.6rem;
   }
+}
+
+
 
   /* About e Boxes */
   .about {
@@ -467,3 +477,4 @@ img:hover {
 #typed-text {
   animation: blink-caret 0.8s step-end infinite;
 }
+
