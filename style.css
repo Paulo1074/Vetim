@@ -465,7 +465,10 @@ img:hover {
 
 /* Container para o typed */
 .home-container .content {
-  /* Já tem largura responsiva e centralização */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Cursor animado (opcional) */
