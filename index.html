@@ -17,18 +17,20 @@
   <style>
     /* Cursor piscando para efeito de digitação */
     #typed-text {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 2rem;
-      white-space: nowrap;
-      border-right: 2px solid black; /* cursor */
-      animation: blink-caret 0.8s step-end infinite;
-      overflow: hidden;
-      width: fit-content;
-    }
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 2rem;
+  white-space: normal;       /* permite quebra de linha */
+  border-right: 2px solid rgb(255, 251, 0); /* cursor */
+  animation: blink-caret 0.8s step-end infinite;
+  overflow-wrap: break-word; /* quebra palavras longas */
+  max-width: 100%;           /* não ultrapassa a largura da tela */
+  width: auto;               /* largura automática */
+}
+
 
     @keyframes blink-caret {
       from, to { border-color: transparent; }
-      50% { border-color: black; }
+      50% { border-color: rgb(255, 251, 0); }
     }
   </style>
 </head>
@@ -98,7 +100,7 @@
     <div class="box-container">
       <div class="box" data-aos="zoom-in" data-aos-delay="100">
         <img src="imagem/area.jpg" alt="Espaço amplo" class="zoomable" />
-        <h3>Espaço</h3>
+        <h3>Espaço Lateral</h3>
         <p>Temos um ambiente amplo e confortável.</p>
       </div>
       <div class="box" data-aos="zoom-in" data-aos-delay="200">
@@ -111,7 +113,15 @@
         <h3>Piscina</h3>
         <p>Perfeita para relaxar, se refrescar e curtir com alegria.</p>
       </div>
+      <div class="box" data-aos="zoom-in" data-aos-delay="300">
+        <img src="imagem/espaço.jpg" alt="Piscina" class="zoomable" />
+        <h3>Espaço</h3>
+        <p>Nosso Espaço</p>
     </div>
+    <div class="box" data-aos="zoom-in" data-aos-delay="300">
+        <img src="imagem/lateral.jpg" alt="Piscina" class="zoomable" />
+        <h3>Área</h3>
+        <p>Espaço perto da churrasqueira</p>
   </section>
 
   <!-- Contato -->
