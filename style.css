@@ -185,6 +185,8 @@ img:hover {
 .about .container-image {
   flex: 0 0 auto;
   display: flex;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
   justify-content: center;
 }
 
@@ -505,101 +507,3 @@ img:hover {
 #typed-text {
   animation: blink-caret 0.8s step-end infinite;
 }
-
-/* Calendário */
-#calendario {
-  background: transparent;
-  border-radius: 12px;
-  margin-bottom: 2rem ;
-  padding: 1.5rem;
-  box-shadow: 0 0 20px rgba(255, 208, 0, 0.5);
-  max-width: 400px;
-  margin: 0 auto;
-  user-select: none;
-  font-family: 'IBM Plex Sans', sans-serif;
-  color: #ffd000;
-}
-
-#calendario > div:first-child {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-#calendario button {
-  background: #ffd000;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #121212;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(255, 215, 0, 0.4);
-}
-
-#calendario button:hover {
-  background-color: #e6c300;
-}
-
-#mesAno {
-  font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: 0.05em;
-}
-
-#diasSemana {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: #ffea00;
-  user-select: none;
-  font-size: 0.95rem;
-}
-
-#dias {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  text-align: center;
-  font-size: 1rem;
-}
-
-#dias div {
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
-  border-radius: 10px;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#dias div:hover {
-  filter: brightness(1.2);
-}
-
-#dias div.disponivel {
-  background-color: #26ff00;
-  color: #121212;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 255, 13, 0.7);
-}
-
-#dias div.indisponivel {
-  background-color: #333;
-  color: #888;
-  cursor: default;
-}
-
-#calendario {
-  margin: 2rem 0; /* 2rem em cima e embaixo */
-}
-
-

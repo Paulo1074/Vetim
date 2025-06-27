@@ -3,275 +3,231 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-    <link rel="stylesheet" href="index.css" />
-  <title>Login - Espaço Vetim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espaço Vetim</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Inter&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome para ícones -->
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+
+  <!-- AOS: Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
   <style>
- /* Reset e estilo base */
-body {
-  background-color: #000000;
-  color: #ffd600;
-  font-family: 'IBM Plex Sans', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 6rem;
-  padding: 1rem 1rem 3rem 1rem; /* pouco espaçamento no topo */
-  text-align: center;
-  user-select: none;
-  min-height: 100vh;
-}
+    /* Cursor piscando para efeito de digitação */
+    #typed-text {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 2rem;
+      white-space: normal;
+      /* permite quebra de linha */
+      border-right: 2px solid rgb(255, 251, 0);
+      /* cursor */
+      animation: blink-caret 0.8s step-end infinite;
+      overflow-wrap: break-word;
+      /* quebra palavras longas */
+      max-width: 100%;
+      /* não ultrapassa a largura da tela */
+      width: auto;
+      /* largura automática */
+    }
 
-h1 {
-  font-size: 3.2rem;
-  margin: 0;       /* remove margem superior */
-  padding-top: 0;  /* remove padding superior */
-  margin-bottom: 10rem; /* espaçamento só embaixo */
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #ffd600;
-  z-index: 1; /* para ficar acima do background */
-}
+    @keyframes blink-caret {
 
-/* Botões */
-button {
-  background-color: #ffd600;
-  border: none;
-  padding: 1.15rem 3rem;
-  margin-bottom: 2rem;
-  font-weight: 700;
-  font-size: 1.25rem;
-  border-radius: 12px;
-  cursor: pointer;
-  color: #121212;
-  box-shadow: none;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
-  min-width: 240px;
-  user-select: none;
-  position: relative;
-  z-index: 1;
-}
+      from,
+      to {
+        border-color: transparent;
+      }
 
-button:hover {
-  background-color: #e6c200;
-  transform: scale(1.07);
-}
+      50% {
+        border-color: rgb(255, 251, 0);
+      }
+    }
 
-button:active {
-  transform: scale(0.97);
-}
+    /* Estilos do calendário */
 
-/* Responsividade */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 2.6rem;
-    margin-bottom: 2rem;
-  }
-  button {
-    width: 90%;
-    min-width: unset;
-    font-size: 1.1rem;
-    padding: 1rem 0;
-  }
-}
+    #dias div {
+      padding: 0.5rem 0;
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      text-align: center;
+    }
 
-#tsparticles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0; /* atrás de tudo */
-  pointer-events: none; /* para não atrapalhar cliques */
-}
+    .disponivel {
+      background-color: #4caf50;
+      color: white;
+    }
 
-#admin-login {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  z-index: 1;
-}
+    .disponivel:hover {
+      background-color: #45a049;
+    }
 
-#admin-login input {
-  padding: 0.8rem 1rem;
-  border: 2px solid #ffd600;
-  border-radius: 8px;
-  background-color: #1f1f1f;
-  color: #ffd600;
-  font-size: 1rem;
-  width: 250px;
-  text-align: center;
-}
+    .indisponivel {
+      background-color: #555;
+      color: #aaa;
+      cursor: not-allowed;
+    }
 
-#admin-login input::placeholder {
-  color: #bbb;
-  font-style: italic;
-}
-
-#admin-login button {
-  background-color: #ffd600;
-  color: #121212;
-  font-weight: bold;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-#admin-login button:hover {
-  background-color: #e6c200;
-}
-
-.logo-fixa {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: transparent; /* ou a cor que preferir */
-  border: none;
-  overflow: hidden;
-  z-index: 2;
-  transition: transform 0.3s ease;
-  user-select: none;
-  cursor: pointer;
-}
-
-
-/* hover só no desktop */
-@media (hover: hover) and (pointer: fine) {
-  .logo-fixa:hover {
-    transform: scale(1.08);
-  }
-}
-
-/* Para celular: torna a logo redonda */
-@media (max-width: 480px) {
-  .logo-fixa {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* deixa redondo */
-  }
-}
-
-/* Para PC (telas maiores): deixa quadrada */
-@media (min-width: 481px) {
-  .logo-fixa {
-    border-radius: 0; /* quadrado */
-  }
-}
-
-/* Se tiver uma imagem dentro, ajuste para caber */
-.logo-fixa img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .ocupado {
+      background-color: #f44336;
+      color: white;
+    }
   </style>
 </head>
 
 <body>
-  <img src="imagem/espaçoooooooooo.png" alt="Logo do Espaço Vetim" class="logo-fixa" />
-  <h1>Espaço Vetim</h1>
-  <button id="clienteBtn">Entrar como Cliente</button>
-  <button id="adminBtn">Entrar como Admin</button>
-  <div id="admin-login" style="display: none;">
-  <input type="password" id="adminPassword" placeholder="Digite a senha" />
-  <button id="confirmAdmin">Confirmar</button>
-  <p id="senhaIncorreta" style="color: #ff4d4d; display: none; margin-top: 0.5rem;">Senha incorreta</p>
-</div>
 
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">
+      <img src="imagem/espaçoooooooooo.png" alt="Logo Espaço Vetim" width="90" height="90" />
+    </a>
+    <nav class="navbar">
+      <a href="#home">Início</a>
+      <a href="#about">Sobre</a>
+      <a href="galeria.html">Nossa Galeria</a>
+      <a href="#contact">Contato</a>
+    </nav>
+    <div class="icons">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/espacovetim/" target="_blank" title="Instagram">
+        <img src="imagem/insta dourado.jpg" alt="" width="44" height="40" />
+      </a>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/+553492496259" target="_blank" title="WhatsApp">
+        <img src="imagem/w douradp.jpg" alt="" width="40" height="40" />
+      </a>
+    </div>
+  </header>
 
+  <!-- Home -->
+  <section class="home-container" id="home">
+    <div class="content">
+      <h3 id="typed-text"></h3> <!-- Texto digitando aqui -->
+      <p>Cuidando de você com amor e dedicação.</p>
+      <a href="https://wa.me/+553492496259" target="_blank" class="btn">Agende seu horário pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="about" id="about" data-aos="fade-up">
+    <h2>Sobre o Espaço Vetim</h2>
+    <div class="row">
+      <div class="container-image">
+        <img src="imagem/vetim.jpg" alt="Sobre nós" width="40%" />
+      </div>
+      <div class="container-text">
+        <h3>O espaço perfeito para suas celebrações</h3>
+        <p>O Espaço Vetim oferece um ambiente versátil e acolhedor, ideal para festas, eventos sociais e
+          confraternizações...</p>
+        <p>Aqui, sua segurança vem em primeiro lugar! Temos o AVCB (Auto de Vistoria do Corpo de Bombeiros),
+          que asseguram que nosso espaço está dentro de todas as normas técnicas e legais para oferecer conforto e
+          tranquilidade.</p>
+        <p>Venha desfrutar de:</p>
+        <ul>
+          <li>Salão amplo</li>
+          <li>Área de lazer com piscina</li>
+          <li>Ambiente decorado e equipado</li>
+          <li>Localização acessível e segura</li>
+          <li>Piscina com aquecimento solar e iluminação em led</li>
+          <li>Churrasqueira, Freezer, internet, quarto, banheiros</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="contact" id="contact" data-aos="fade-up">
+    <h2>Entre em contato</h2>
+    <p>Instagram: <a href="https://www.instagram.com/espacovetim/" target="_blank">@espacovetim</a></p>
+    <p>Endereço: Rua João Guimarães Borges, 135 - Mangabeiras V</p>
+    <p>📱Telefone: (34) 99249-6259</p>
+    <p>📧 E-mail: fvitoralencar@outlook.com</p>
+  </section>
+
+  <!-- Modal de imagem -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" alt="Imagem Ampliada">
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.getElementById('clienteBtn').addEventListener('click', () => {
-      // Redireciona para site normal
-      window.location.href = 'site.html'; // <-- Aqui o arquivo real do site
+    AOS.init();
+
+    // Animação ao carregar conteúdo da home
+    window.addEventListener("load", () => {
+      const content = document.querySelector(".home-container .content");
+      content.style.opacity = 0;
+      content.style.transform = "translateY(30px)";
+      content.style.transition = "all 2s ease";
+
+      setTimeout(() => {
+        content.style.opacity = 1;
+        content.style.transform = "translateY(0)";
+      }, 200);
     });
 
-   document.getElementById('adminBtn').addEventListener('click', () => {
-  const form = document.getElementById('admin-login');
-  form.style.display = form.style.display === 'none' ? 'flex' : 'none';
-});
+    // Modal de imagem
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".close");
 
-document.getElementById('confirmAdmin').addEventListener('click', () => {
-  const senha = document.getElementById('adminPassword').value;
-  const senhaCorreta = 'VetimAlencar1999@2025';
+    document.querySelectorAll(".zoomable").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      });
+    });
 
-  if (senha === senhaCorreta) {
-    window.location.href = 'site.html?admin=true';
-  } else {
-    document.getElementById('senhaIncorreta').style.display = 'block';
-  }
-});
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
 
-
-    tsParticles.load("tsparticles", {
-  fpsLimit: 60,
-  background: {
-    color: "#000000"
-  },
-  particles: {
-    number: {
-      value: 40,
-      density: {
-        enable: true,
-        area: 800
+    modal.addEventListener("click", e => {
+      if (e.target === modal) {
+        modal.style.display = "none";
       }
-    },
-    color: {
-      value: "#ffd600"
-    },
-    shape: {
-      type: "circle"
-    },
-    opacity: {
-      value: 0.25,
-      random: true,
-      anim: {
-        enable: true,
-        speed: 0.5,
-        opacity_min: 0.1,
-        sync: false
-      }
-    },
-    size: {
-      value: 3,
-      random: { enable: true, minimumValue: 1 }
-    },
-    move: {
-      enable: true,
-      speed: 4,
-      direction: "none",
-      random: true,
-      straight: false,
-      outModes: "out"
-    }
-  },
-  interactivity: {
-    detectsOn: "canvas",
-    events: {
-      onHover: {
-        enable: false
-      },
-      onClick: {
-        enable: false
-      },
-      resize: true
-    }
-  },
-  detectRetina: true
-});
+    });
 
+    // Efeito digitação
+    const texts = ["Bem-vindo ao Espaço Vetim", "Seu espaço para eventos", "Agende seu horário já!"];
+    let textIndex = 0;
+    let charIndex = 0;
+    const speed = 60;
+    const delay = 1500; // tempo antes de apagar
+
+    function type() {
+      if (charIndex < texts[textIndex].length) {
+        document.getElementById("typed-text").innerHTML += texts[textIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, speed);
+      } else {
+        setTimeout(erase, delay);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        document.getElementById("typed-text").innerHTML = texts[textIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, speed / 2);
+      } else {
+        textIndex++;
+        if (textIndex >= texts.length) textIndex = 0;
+        setTimeout(type, speed);
+      }
+    }
+
+    window.addEventListener("load", type);
   </script>
-  
+
 </body>
 
 </html>
