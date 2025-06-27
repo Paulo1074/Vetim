@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  <title>Login - Espaço Vetim</title>
+  <style>
+ /* Reset e estilo base */
+body {
+  background-color: #000000;
+  color: #ffd600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+  padding: 1rem 1rem 3rem 1rem; /* pouco espaçamento no topo */
+  text-align: center;
+  user-select: none;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2rem;
+  margin: 0;       /* remove margem superior */
+  padding-top: 0;  /* remove padding superior */
+  margin-bottom: 10rem; /* espaçamento só embaixo */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #ffd600;
+  z-index: 1; /* para ficar acima do background */
+}
+
+/* Botões */
+button {
+  background-color: #ffd600;
+  border: none;
+  padding: 1.15rem 3rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #121212;
+  box-shadow: none;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+  min-width: 240px;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+button:hover {
+  background-color: #e6c200;
+  transform: scale(1.07);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
+  }
+  button {
+    width: 90%;
+    min-width: unset;
+    font-size: 1.1rem;
+    padding: 1rem 0;
+  }
+}
+
+#tsparticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* atrás de tudo */
+  pointer-events: none; /* para não atrapalhar cliques */
+}
+
+#admin-login {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 1;
+}
+
+#admin-login input {
+  padding: 0.8rem 1rem;
+  border: 2px solid #ffd600;
+  border-radius: 8px;
+  background-color: #1f1f1f;
+  color: #ffd600;
+  font-size: 1rem;
+  width: 250px;
+  text-align: center;
+}
+
+#admin-login input::placeholder {
+  color: #bbb;
+  font-style: italic;
+}
+
+#admin-login button {
+  background-color: #ffd600;
+  color: #121212;
+  font-weight: bold;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#admin-login button:hover {
+  background-color: #e6c200;
+}
+
+.logo-fixa {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 120px;
+  height: auto;
+  z-index: 2;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.logo-fixa:hover {
+  transform: scale(1.08);
+}
+  </style>
+</head>
+
+<body>
+  <img src="imagem/espaçoooooooooo.png" alt="Logo do Espaço Vetim" class="logo-fixa" />
+  <h1>Espaço Vetim</h1>
+  <button id="clienteBtn">Entrar como Cliente</button>
+  <button id="adminBtn">Entrar como Admin</button>
+  <div id="admin-login" style="display: none;">
+  <input type="password" id="adminPassword" placeholder="Digite a senha" />
+  <button id="confirmAdmin">Confirmar</button>
+  <p id="senhaIncorreta" style="color: #ff4d4d; display: none; margin-top: 0.5rem;">Senha incorreta</p>
+</div>
+
+
+  <script>
+    document.getElementById('clienteBtn').addEventListener('click', () => {
+      // Redireciona para site normal
+      window.location.href = 'site.html'; // <-- Aqui o arquivo real do site
+    });
+
+   document.getElementById('adminBtn').addEventListener('click', () => {
+  const form = document.getElementById('admin-login');
+  form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+});
+
+document.getElementById('confirmAdmin').addEventListener('click', () => {
+  const senha = document.getElementById('adminPassword').value;
+  const senhaCorreta = 'VetimAlencar1999@2025';
+
+  if (senha === senhaCorreta) {
+    window.location.href = 'site.html?admin=true';
+  } else {
+    document.getElementById('senhaIncorreta').style.display = 'block';
+  }
+});
+
+
+    tsParticles.load("tsparticles", {
+  fpsLimit: 60,
+  background: {
+    color: "#000000"
+  },
+  particles: {
+    number: {
+      value: 40,
+      density: {
+        enable: true,
+        area: 800
+      }
+    },
+    color: {
+      value: "#ffd600"
+    },
+    shape: {
+      type: "circle"
+    },
+    opacity: {
+      value: 0.25,
+      random: true,
+      anim: {
+        enable: true,
+        speed: 0.5,
+        opacity_min: 0.1,
+        sync: false
+      }
+    },
+    size: {
+      value: 3,
+      random: { enable: true, minimumValue: 1 }
+    },
+    move: {
+      enable: true,
+      speed: 4,
+      direction: "none",
+      random: true,
+      straight: false,
+      outModes: "out"
+    }
+  },
+  interactivity: {
+    detectsOn: "canvas",
+    events: {
+      onHover: {
+        enable: false
+      },
+      onClick: {
+        enable: false
+      },
+      resize: true
+    }
+  },
+  detectRetina: true
+});
+
+  </script>
+  
+</body>
+
+</html>

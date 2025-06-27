@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espaço Vetim</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="site.css" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Inter&display=swap" rel="stylesheet" />
 
   <!-- FontAwesome para ícones -->
@@ -178,99 +178,109 @@
 
 
   <script>
-    let diasOcupados = [];
+  // Lê o parâmetro "admin" da URL para saber se é admin ou cliente
+const urlParams = new URLSearchParams(window.location.search);
+const adminLogado = urlParams.get('admin') === 'true';
 
-    const mesesNomes = [
-      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-    ];
+let diasOcupados = [];
 
-    let dataAtual = new Date();
+const mesesNomes = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+];
 
-    function carregarDiasOcupados() {
-      const dados = localStorage.getItem('diasOcupados');
-      if (dados) {
-        diasOcupados = JSON.parse(dados);
-      }
+let dataAtual = new Date();
+
+function carregarDiasOcupados() {
+  const dados = localStorage.getItem('diasOcupados');
+  if (dados) {
+    diasOcupados = JSON.parse(dados);
+  }
+}
+
+function salvarDiasOcupados() {
+  localStorage.setItem('diasOcupados', JSON.stringify(diasOcupados));
+}
+
+function isDiaDisponivel(dataISO) {
+  // Agora todo dia é disponível
+  return true;
+}
+
+function isDiaOcupado(dataISO) {
+  return diasOcupados.includes(dataISO);
+}
+
+function toggleOcupado(diaDiv, dataISO) {
+  if (!isDiaDisponivel(dataISO)) return;
+
+  if (isDiaOcupado(dataISO)) {
+    diasOcupados = diasOcupados.filter(d => d !== dataISO);
+    diaDiv.classList.remove('ocupado');
+    diaDiv.classList.add('disponivel');
+  } else {
+    diasOcupados.push(dataISO);
+    diaDiv.classList.remove('disponivel');
+    diaDiv.classList.add('ocupado');
+  }
+  salvarDiasOcupados();
+}
+
+function renderizarCalendario() {
+  const mesAno = document.getElementById('mesAno');
+  mesAno.textContent = `${mesesNomes[dataAtual.getMonth()]} ${dataAtual.getFullYear()}`;
+
+  const diasContainer = document.getElementById('dias');
+  diasContainer.innerHTML = '';
+
+  const ano = dataAtual.getFullYear();
+  const mes = dataAtual.getMonth();
+
+  const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+  const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+
+  for (let i = 0; i < primeiroDiaSemana; i++) {
+    const vazio = document.createElement('div');
+    diasContainer.appendChild(vazio);
+  }
+
+  for (let dia = 1; dia <= diasNoMes; dia++) {
+    const dataISO = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+    const diaDiv = document.createElement('div');
+    diaDiv.textContent = dia;
+
+    if (isDiaOcupado(dataISO)) {
+      diaDiv.classList.add('ocupado');
+    } else {
+      diaDiv.classList.add('disponivel');
     }
 
-    function salvarDiasOcupados() {
-      localStorage.setItem('diasOcupados', JSON.stringify(diasOcupados));
+    if (adminLogado) {
+      diaDiv.style.cursor = 'pointer';
+      diaDiv.addEventListener('click', () => {
+        toggleOcupado(diaDiv, dataISO);
+      });
+    } else {
+      diaDiv.style.cursor = 'default'; // cliente não pode clicar
     }
 
-    function isDiaDisponivel(dataISO) {
-      // Agora todo dia é disponível
-      return true;
-    }
+    diasContainer.appendChild(diaDiv);
+  }
+}
 
-    function isDiaOcupado(dataISO) {
-      return diasOcupados.includes(dataISO);
-    }
+document.getElementById('prevMonth').addEventListener('click', () => {
+  dataAtual.setMonth(dataAtual.getMonth() - 1);
+  renderizarCalendario();
+});
 
-    function toggleOcupado(diaDiv, dataISO) {
-      if (!isDiaDisponivel(dataISO)) return;
+document.getElementById('nextMonth').addEventListener('click', () => {
+  dataAtual.setMonth(dataAtual.getMonth() + 1);
+  renderizarCalendario();
+});
 
-      if (isDiaOcupado(dataISO)) {
-        diasOcupados = diasOcupados.filter(d => d !== dataISO);
-        diaDiv.classList.remove('ocupado');
-        diaDiv.classList.add('disponivel');
-      } else {
-        diasOcupados.push(dataISO);
-        diaDiv.classList.remove('disponivel');
-        diaDiv.classList.add('ocupado');
-      }
-      salvarDiasOcupados();
-    }
+carregarDiasOcupados();
+renderizarCalendario();
 
-    function renderizarCalendario() {
-      const mesAno = document.getElementById('mesAno');
-      mesAno.textContent = `${mesesNomes[dataAtual.getMonth()]} ${dataAtual.getFullYear()}`;
-
-      const diasContainer = document.getElementById('dias');
-      diasContainer.innerHTML = '';
-
-      const ano = dataAtual.getFullYear();
-      const mes = dataAtual.getMonth();
-
-      const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
-      const diasNoMes = new Date(ano, mes + 1, 0).getDate();
-
-      for (let i = 0; i < primeiroDiaSemana; i++) {
-        const vazio = document.createElement('div');
-        diasContainer.appendChild(vazio);
-      }
-
-      for (let dia = 1; dia <= diasNoMes; dia++) {
-        const dataISO = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
-        const diaDiv = document.createElement('div');
-        diaDiv.textContent = dia;
-
-        if (isDiaOcupado(dataISO)) {
-          diaDiv.classList.add('ocupado');
-        } else {
-          diaDiv.classList.add('disponivel');
-        }
-
-        diaDiv.addEventListener('click', () => {
-          toggleOcupado(diaDiv, dataISO);
-        });
-
-        diasContainer.appendChild(diaDiv);
-      }
-    }
-
-    document.getElementById('prevMonth').addEventListener('click', () => {
-      dataAtual.setMonth(dataAtual.getMonth() - 1);
-      renderizarCalendario();
-    });
-
-    document.getElementById('nextMonth').addEventListener('click', () => {
-      dataAtual.setMonth(dataAtual.getMonth() + 1);
-      renderizarCalendario();
-    });
-
-    carregarDiasOcupados();
-    renderizarCalendario();
 
   </script>
 
