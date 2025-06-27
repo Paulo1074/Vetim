@@ -134,15 +134,45 @@ button:active {
   top: 1rem;
   left: 1rem;
   width: 120px;
-  height: auto;
+  height: 120px;
+  background-color: red; /* só pra exemplo */
+  overflow: hidden;
   z-index: 2;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-radius 0.3s ease;
   user-select: none;
+  cursor: pointer;
 }
 
-.logo-fixa:hover {
-  transform: scale(1.08);
+/* hover só no desktop */
+@media (hover: hover) and (pointer: fine) {
+  .logo-fixa:hover {
+    transform: scale(1.08);
+  }
 }
+
+/* Para celular: torna a logo redonda */
+@media (max-width: 480px) {
+  .logo-fixa {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* deixa redondo */
+  }
+}
+
+/* Para PC (telas maiores): deixa quadrada */
+@media (min-width: 481px) {
+  .logo-fixa {
+    border-radius: 0; /* quadrado */
+  }
+}
+
+/* Se tiver uma imagem dentro, ajuste para caber */
+.logo-fixa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
   </style>
 </head>
 
