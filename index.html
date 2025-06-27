@@ -7,30 +7,74 @@
   <title>Espaço Vetim</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Inter&display=swap" rel="stylesheet" />
-  
+
   <!-- FontAwesome para ícones -->
   <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 
   <!-- AOS: Animate On Scroll -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  
+
   <style>
     /* Cursor piscando para efeito de digitação */
     #typed-text {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 2rem;
-  white-space: normal;       /* permite quebra de linha */
-  border-right: 2px solid rgb(255, 251, 0); /* cursor */
-  animation: blink-caret 0.8s step-end infinite;
-  overflow-wrap: break-word; /* quebra palavras longas */
-  max-width: 100%;           /* não ultrapassa a largura da tela */
-  width: auto;               /* largura automática */
-}
-
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 2rem;
+      white-space: normal;
+      /* permite quebra de linha */
+      border-right: 2px solid rgb(255, 251, 0);
+      /* cursor */
+      animation: blink-caret 0.8s step-end infinite;
+      overflow-wrap: break-word;
+      /* quebra palavras longas */
+      max-width: 100%;
+      /* não ultrapassa a largura da tela */
+      width: auto;
+      /* largura automática */
+    }
 
     @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: rgb(255, 251, 0); }
+
+      from,
+      to {
+        border-color: transparent;
+      }
+
+      50% {
+        border-color: rgb(255, 251, 0);
+      }
+    }
+
+    /* Estilos do calendário */
+
+    #dias div {
+      padding: 0.5rem 0;
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .disponivel {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .disponivel:hover {
+      background-color: #45a049;
+    }
+
+    .indisponivel {
+      background-color: #555;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    .ocupado {
+      background-color: #f44336;
+      color: white;
     }
   </style>
 </head>
@@ -45,7 +89,7 @@
     <nav class="navbar">
       <a href="#home">Início</a>
       <a href="#about">Sobre</a>
-      <a href="#services">O que oferecemos</a>
+      <a href="galeria.html">Nossa Galeria</a>
       <a href="#contact">Contato</a>
     </nav>
     <div class="icons">
@@ -78,9 +122,11 @@
       </div>
       <div class="container-text">
         <h3>O espaço perfeito para suas celebrações</h3>
-        <p>O Espaço Vetim oferece um ambiente versátil e acolhedor, ideal para festas, eventos sociais e confraternizações...</p>
+        <p>O Espaço Vetim oferece um ambiente versátil e acolhedor, ideal para festas, eventos sociais e
+          confraternizações...</p>
         <p>Aqui, sua segurança vem em primeiro lugar! Temos o AVCB (Auto de Vistoria do Corpo de Bombeiros),
-         que asseguram que nosso espaço está dentro de todas as normas técnicas e legais para oferecer conforto e tranquilidade.</p>
+          que asseguram que nosso espaço está dentro de todas as normas técnicas e legais para oferecer conforto e
+          tranquilidade.</p>
         <p>Venha desfrutar de:</p>
         <ul>
           <li>Salão amplo</li>
@@ -94,35 +140,139 @@
     </div>
   </section>
 
-  <!-- Serviços -->
-  <section class="menu" id="services" data-aos="fade-up">
-    <h2 class="title">O que oferecemos</h2>
-    <div class="box-container">
-      <div class="box" data-aos="zoom-in" data-aos-delay="100">
-        <img src="imagem/area.jpg" alt="Espaço amplo" class="zoomable" />
-        <h3>Espaço Lateral</h3>
-        <p>Temos um ambiente amplo e confortável.</p>
+  <!-- Calendário -->
+  <!-- Centralizador -->
+  <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+  <section id="disponibilidade" style="padding: 2rem 5%; color:#ffd000; width: 100%; max-width: 400px; margin: auto;">
+    <h2 style="text-align:center; margin-bottom: 1rem;">Calendário de Disponibilidade</h2>
+    <div id="calendario"
+      style="background:#222; border-radius:8px; padding:1rem; box-shadow: 0 0 10px rgba(255, 208, 0, 0.3);">
+      
+      <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom: 1rem;">
+        <button id="prevMonth"
+          style="background:#ffd000; border:none; padding:0.5rem 1rem; border-radius:6px; cursor:pointer;">&#8592;</button>
+        <div id="mesAno" style="font-weight:bold; font-size:1.2rem;"></div>
+        <button id="nextMonth"
+          style="background:#ffd000; border:none; padding:0.5rem 1rem; border-radius:6px; cursor:pointer;">&#8594;</button>
       </div>
-      <div class="box" data-aos="zoom-in" data-aos-delay="200">
-        <img src="imagem/area2.jpg" alt="Área de lazer" class="zoomable" />
-        <h3>Área de lazer</h3>
-        <p>Uma área projetada para seu descanso e entretenimento.</p>
+
+      <div id="diasSemana"
+        style="display:grid; grid-template-columns: repeat(7, 1fr); text-align:center; font-weight:bold; margin-bottom: 0.5rem;">
+        <div>Dom</div>
+        <div>Seg</div>
+        <div>Ter</div>
+        <div>Qua</div>
+        <div>Qui</div>
+        <div>Sex</div>
+        <div>Sáb</div>
       </div>
-      <div class="box" data-aos="zoom-in" data-aos-delay="300">
-        <img src="imagem/piscina2.jpg" alt="Piscina" class="zoomable" />
-        <h3>Piscina</h3>
-        <p>Perfeita para relaxar, se refrescar e curtir.</p>
-      </div>
-      <div class="box" data-aos="zoom-in" data-aos-delay="300">
-        <img src="imagem/espaço.jpg" alt="Piscina" class="zoomable" />
-        <h3>Espaço</h3>
-        <p>Nosso Espaço</p>
+
+      <div id="dias"
+        style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align:center;"></div>
     </div>
-    <div class="box" data-aos="zoom-in" data-aos-delay="300">
-        <img src="imagem/lateral.jpg" alt="Piscina" class="zoomable" />
-        <h3>Área</h3>
-        <p>Espaço perto da churrasqueira</p>
   </section>
+</div>
+
+
+  </div>
+
+
+  <script>
+    let diasOcupados = [];
+
+    const mesesNomes = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+
+    let dataAtual = new Date();
+
+    function carregarDiasOcupados() {
+      const dados = localStorage.getItem('diasOcupados');
+      if (dados) {
+        diasOcupados = JSON.parse(dados);
+      }
+    }
+
+    function salvarDiasOcupados() {
+      localStorage.setItem('diasOcupados', JSON.stringify(diasOcupados));
+    }
+
+    function isDiaDisponivel(dataISO) {
+      // Agora todo dia é disponível
+      return true;
+    }
+
+    function isDiaOcupado(dataISO) {
+      return diasOcupados.includes(dataISO);
+    }
+
+    function toggleOcupado(diaDiv, dataISO) {
+      if (!isDiaDisponivel(dataISO)) return;
+
+      if (isDiaOcupado(dataISO)) {
+        diasOcupados = diasOcupados.filter(d => d !== dataISO);
+        diaDiv.classList.remove('ocupado');
+        diaDiv.classList.add('disponivel');
+      } else {
+        diasOcupados.push(dataISO);
+        diaDiv.classList.remove('disponivel');
+        diaDiv.classList.add('ocupado');
+      }
+      salvarDiasOcupados();
+    }
+
+    function renderizarCalendario() {
+      const mesAno = document.getElementById('mesAno');
+      mesAno.textContent = `${mesesNomes[dataAtual.getMonth()]} ${dataAtual.getFullYear()}`;
+
+      const diasContainer = document.getElementById('dias');
+      diasContainer.innerHTML = '';
+
+      const ano = dataAtual.getFullYear();
+      const mes = dataAtual.getMonth();
+
+      const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+      const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+
+      for (let i = 0; i < primeiroDiaSemana; i++) {
+        const vazio = document.createElement('div');
+        diasContainer.appendChild(vazio);
+      }
+
+      for (let dia = 1; dia <= diasNoMes; dia++) {
+        const dataISO = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+        const diaDiv = document.createElement('div');
+        diaDiv.textContent = dia;
+
+        if (isDiaOcupado(dataISO)) {
+          diaDiv.classList.add('ocupado');
+        } else {
+          diaDiv.classList.add('disponivel');
+        }
+
+        diaDiv.addEventListener('click', () => {
+          toggleOcupado(diaDiv, dataISO);
+        });
+
+        diasContainer.appendChild(diaDiv);
+      }
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      dataAtual.setMonth(dataAtual.getMonth() - 1);
+      renderizarCalendario();
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      dataAtual.setMonth(dataAtual.getMonth() + 1);
+      renderizarCalendario();
+    });
+
+    carregarDiasOcupados();
+    renderizarCalendario();
+
+  </script>
 
   <!-- Contato -->
   <section class="contact" id="contact" data-aos="fade-up">
@@ -181,36 +331,37 @@
     });
 
     // Efeito digitação
-   const texts = ["Bem-vindo ao Espaço Vetim", "Seu espaço para eventos", "Agende seu horário já!"];
-let textIndex = 0;
-let charIndex = 0;
-const speed = 60;
-const delay = 1500; // tempo antes de apagar
+    const texts = ["Bem-vindo ao Espaço Vetim", "Seu espaço para eventos", "Agende seu horário já!"];
+    let textIndex = 0;
+    let charIndex = 0;
+    const speed = 60;
+    const delay = 1500; // tempo antes de apagar
 
-function type() {
-  if (charIndex < texts[textIndex].length) {
-    document.getElementById("typed-text").innerHTML += texts[textIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(type, speed);
-  } else {
-    setTimeout(erase, delay);
-  }
-}
+    function type() {
+      if (charIndex < texts[textIndex].length) {
+        document.getElementById("typed-text").innerHTML += texts[textIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, speed);
+      } else {
+        setTimeout(erase, delay);
+      }
+    }
 
-function erase() {
-  if (charIndex > 0) {
-    document.getElementById("typed-text").innerHTML = texts[textIndex].substring(0, charIndex - 1);
-    charIndex--;
-    setTimeout(erase, speed / 2);
-  } else {
-    textIndex++;
-    if (textIndex >= texts.length) textIndex = 0;
-    setTimeout(type, speed);
-  }
-}
+    function erase() {
+      if (charIndex > 0) {
+        document.getElementById("typed-text").innerHTML = texts[textIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, speed / 2);
+      } else {
+        textIndex++;
+        if (textIndex >= texts.length) textIndex = 0;
+        setTimeout(type, speed);
+      }
+    }
 
-window.addEventListener("load", type);
-</script>
+    window.addEventListener("load", type);
+  </script>
 
 </body>
+
 </html>
